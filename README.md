@@ -1,4 +1,4 @@
-# csc325-project
+# CSC 325: Island Eats
 
 There are a significant number of food deserts concentrated in low-income neighborhoods on Long Island. These areas lack easy access to affordable, healthy food options like fresh fruits, vegetables, and whole grains. Residents in food deserts often have to rely on convenience stores and fast-food restaurants, which typically offer limited selections of fresh produce and prioritize processed foods. This limited access to healthy options has a significant impact on overall health, contributing to diet-related problems like obesity, diabetes, and heart disease. 
 
