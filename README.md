@@ -6,7 +6,8 @@ Island Eats aims to create a comprehensive food access and community support pla
 
 By addressing food deserts and increasing access to healthy food options, the project has the potential to create a lasting positive impact on Long Island.
 
-World Assumptions
+# World Assumptions
+
 •	Users have access to the internet and suitable devices (i.e smartphone, computer, internet access)
 •	Users have a mode of transportation (public transport, personal vehicle, etc)
 •	Users have a lack of awareness about existing community resources for healthy food access and are willing to learn 
@@ -14,7 +15,8 @@ World Assumptions
 •	Residents in food deserts are most likely tight on budgets and may prioritize cost over other factors when it comes to food
 •	There is a network of community organizations and volunteers interested in supporting initiatives to reduce food deserts 
 
-User Requirements
+# User Requirements
+
 •	User-friendly interface, with an intuitive design that is easy to navigate for all age groups
 •	Interactive map and calendar functionalities 
 •	Access to reliable information about community pantries, markets, free food resources
@@ -25,7 +27,8 @@ User Requirements
 •	Should be compatible with a wide range of devices, including smartphones and tablets on both iOS and Android platforms
 •	Should have fast load times and responsive performance, as well as reliability and stability with minimal downtime 
 
-Specifications (and interface needs)
+# Specifications (and interface needs)
+
 •	A responsive web application that works on different devices as well as both iOS & Android platforms 
 •	Accessible via major web browsers
 •	Secure user authentication and data encryption since users will create accounts
@@ -38,7 +41,8 @@ Specifications (and interface needs)
 •	Ensure users can easily navigate between different sections of the app with minimal learning curve
 •	Use of high-quality images for resources and recipes to make the app visually appealing 
 
-Program and Hardware
+# Program and Hardware
+
 •	Project Backend Written using Java and its frameworks
 •	Develop frontend using JavaFX
 •	Code should utilize encapsulation for possibly sensitive data to provide user security
