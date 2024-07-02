@@ -1,16 +1,25 @@
-module com.example.islandeats {
+module com.example.csc325_firebase_webview_auth {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
+    requires jdk.jsobject;
+    requires java.xml;
+    requires java.logging;
     requires javafx.web;
+    requires com.google.auth.oauth2;
+    requires google.cloud.firestore;
+    requires firebase.admin;
+    requires com.google.api.apicommon;
 
-    requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires net.synedra.validatorfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
-    requires com.almasb.fxgl.all;
+    requires google.cloud.core;
+    requires com.google.auth;
+    requires google.cloud.storage;
 
-    opens com.example.islandeats to javafx.fxml;
-    exports com.example.islandeats;
+
+    opens com.example.csc325_firebase_webview_auth.viewmodel to jdk.jsobject;
+    exports com.example.csc325_firebase_webview_auth.viewmodel;
+    opens com.example.csc325_firebase_webview_auth.view;
+    exports com.example.csc325_firebase_webview_auth.view;
+    exports com.example.csc325_firebase_webview_auth.model;
+    opens com.example.csc325_firebase_webview_auth.model;
 }
