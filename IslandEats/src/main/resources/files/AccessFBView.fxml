@@ -50,6 +50,7 @@
                         <Image url="@profile_empty.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="switchScene" layoutX="56.0" layoutY="175.0" mnemonicParsing="false" onAction="#Switch" text="Button" />
                </children>
             </AnchorPane>
             <VBox prefHeight="535.0" prefWidth="551.0">

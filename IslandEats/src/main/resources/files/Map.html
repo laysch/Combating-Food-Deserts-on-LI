@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-NYCV4_H0gFJ9NpEflGtVkmgBB2jqzGE&callback=initMap" async defer></script>
+    <script>
+        let map;
+
+        async function InitMap() {
+            const position = { lat: 40.79224, lng: -73.13826 };
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+        }
+
+        map = new Map(document.getElementById("map"), {
+            zoom: 4,
+            center: position,
+            mapId: "ISLAND_EATS_LOCATIONS",
+        });
+
+        function CreateMarker(lat, long) {
+            var mapMarker = new google.maps.Marker({
+                position: { lat: lat, lng: lng },
+                map: map
+            });
+        }
+
+        InitMap();
+    </script>
+</head>
+<body>
+<form>
+    <iframe
+            width="600"
+            height="450"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-NYCV4_H0gFJ9NpEflGtVkmgBB2jqzGE&q=47.6205,-122.3493">
+    </iframe>
+</form>
+</body>
+</html>

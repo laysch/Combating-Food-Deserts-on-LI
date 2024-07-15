@@ -40,6 +40,8 @@ public class AccessFBView {
     private Button writeButton;
     @FXML
     private TextArea outputField;
+    @FXML
+    private Button switchScene;
 
     private boolean key;
     private ObservableList<Resource> listOfResources = FXCollections.observableArrayList();
@@ -177,6 +179,10 @@ public class AccessFBView {
             return false;
         }
 
+    }
+
+    public void Switch() throws IOException {
+        App.setRoot("/files/Map.fxml");
     }
 
 
