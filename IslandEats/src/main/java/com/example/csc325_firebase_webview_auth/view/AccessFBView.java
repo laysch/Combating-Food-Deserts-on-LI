@@ -1,6 +1,5 @@
 package com.example.csc325_firebase_webview_auth.view;//package modelview;
 
-import com.example.csc325_firebase_webview_auth.model.Resource;
 import com.example.csc325_firebase_webview_auth.viewmodel.AccessDataViewModel;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
@@ -18,26 +17,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class AccessFBView {
-    @FXML
-    private TextField nameField;
-    @FXML
-    private TextField addressField;
-    @FXML
-    private TextField cityField;
-    @FXML
-    private TextField hoursField;
-    @FXML
-    private TextField stateField;
-    @FXML
-    private TextField urlField;
-    @FXML
-    private TextField zipField;
-    @FXML
-    private Button writeButton;
+    //fxml member variables
     @FXML
     private TextArea outputField;
     @FXML
@@ -46,6 +37,8 @@ public class AccessFBView {
     private boolean key;
     private ObservableList<Resource> listOfResources = FXCollections.observableArrayList();
     private Resource resource;
+
+    private static boolean authentication = false;
 
     @FXML
     private TableView<Resource> table;
@@ -66,17 +59,20 @@ public class AccessFBView {
         return listOfResources;
     }
 
+    /**
+     *  initialize sets up the table view
+     * */
     @FXML
     void initialize() {
-        AccessDataViewModel accessDataViewModel = new AccessDataViewModel();
-        nameField.textProperty().bindBidirectional(accessDataViewModel.resourceNameProperty());
-        addressField.textProperty().bindBidirectional(accessDataViewModel.resourceAddressProperty());
-        cityField.textProperty().bindBidirectional(accessDataViewModel.resourceCityProperty());
-        stateField.textProperty().bindBidirectional(accessDataViewModel.resourceStateProperty());
-        zipField.textProperty().bindBidirectional(accessDataViewModel.resourceZipProperty());
-        hoursField.textProperty().bindBidirectional(accessDataViewModel.resourceHoursProperty());
-        urlField.textProperty().bindBidirectional(accessDataViewModel.resourceUrlProperty());
-        writeButton.disableProperty().bind(accessDataViewModel.isWritePossibleProperty().not());
+//        AccessDataViewModel accessDataViewModel = new AccessDataViewModel();
+//        nameField.textProperty().bindBidirectional(accessDataViewModel.resourceNameProperty());
+//        addressField.textProperty().bindBidirectional(accessDataViewModel.resourceAddressProperty());
+//        cityField.textProperty().bindBidirectional(accessDataViewModel.resourceCityProperty());
+//        stateField.textProperty().bindBidirectional(accessDataViewModel.resourceStateProperty());
+//        zipField.textProperty().bindBidirectional(accessDataViewModel.resourceZipProperty());
+//        hoursField.textProperty().bindBidirectional(accessDataViewModel.resourceHoursProperty());
+//        urlField.textProperty().bindBidirectional(accessDataViewModel.resourceUrlProperty());
+//        writeButton.disableProperty().bind(accessDataViewModel.isWritePossibleProperty().not());
 
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         address.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -86,15 +82,15 @@ public class AccessFBView {
         state.setCellValueFactory(new PropertyValueFactory<>("state"));
         zipcode.setCellValueFactory(new PropertyValueFactory<>("zipcode"));
         table.setItems(listOfResources);
+
+        readFirebase();
     }
 
+    /**
+     *  public readRecord to call private method
+     * */
     @FXML
-    private void addRecord(ActionEvent event) {
-        addData();
-    }
-
-    @FXML
-    private void readRecord(ActionEvent event) {
+    public void readRecord(ActionEvent event) {
         readFirebase();
     }
 
@@ -104,22 +100,10 @@ public class AccessFBView {
         App.setRoot("/files/WebContainer.fxml");
     }
 
-    public void addData() {
-        DocumentReference docRef = App.fstore.collection("Resources").document(UUID.randomUUID().toString());
-
-        Map<String, Object> data = new HashMap<>();
-        data.put("name", nameField.getText());
-        data.put("address", addressField.getText());
-        data.put("city", cityField.getText());
-        data.put("state", stateField.getText());
-        data.put("zipcode", zipField.getText());
-        data.put("hours", hoursField.getText());
-        data.put("url", urlField.getText());
-        //asynchronously write data
-        ApiFuture<WriteResult> result = docRef.set(data);
-    }
-
-    public boolean readFirebase() {
+    /**
+     *  private readFirebase reads records from firebase no sql database
+     * */
+    private boolean readFirebase() {
         key = false;
 
         //asynchronously retrieve all documents
@@ -131,13 +115,6 @@ public class AccessFBView {
             if (documents.size() > 0) {
                 System.out.println("Outing....");
                 for (QueryDocumentSnapshot document : documents) {
-                    outputField.setText(outputField.getText() + "Name: " + document.getData().get("name") + " , Address: " +
-                            document.getData().get("address") + " , City: " +
-                            document.getData().get("city") + " , State: " +
-                            document.getData().get("state") + " , Zipcode: " +
-                            document.getData().get("zipcode") + " , URL: " +
-                            document.getData().get("url") + " , Hours: " +
-                            document.getData().get("hours") + " \n ");
                     System.out.println(document.getId() + " => " + document.getData().get("name"));
                     resource = new Resource(String.valueOf(document.getData().get("name")),
                             document.getData().get("address").toString(),
@@ -159,6 +136,9 @@ public class AccessFBView {
         return key;
     }
 
+    /**
+     *  Registers user in firebase auth *NOT USED*
+     * */
     public boolean registerUser(String email, String password) {
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                 .setEmail(email)
@@ -181,9 +161,66 @@ public class AccessFBView {
 
     }
 
-    public void Switch() throws IOException {
-        App.setRoot("/files/Map.fxml");
+    @FXML
+    private void LaunchLogin() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/files/Login.fxml"));
+            Parent parent = fxmlLoader.load();
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.setScene(scene);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
+    @FXML
+    private void LaunchAddRecord() {
+        if (authentication) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/files/AddResourceUI.fxml"));
+                Parent parent = fxmlLoader.load();
 
+                Scene scene = new Scene(parent);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+                stage.setScene(scene);
+                stage.showAndWait();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("ERROR: Administrator Login Required");
+        }
+    }
+
+    @FXML
+    private void LaunchMap() {
+        try {
+            App.setRoot("/files/Map.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void LaunchForum() {
+        try {
+            App.setRoot("/files/Forum.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void autheticate(boolean auth) {
+        authentication = auth;
+        System.out.println(authentication);
+    }
 }

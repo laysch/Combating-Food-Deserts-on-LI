@@ -15,6 +15,9 @@ import java.io.IOException;
  */
 public class FirestoreContext {
 
+    /**
+     *Initializes firebase
+     */
     public Firestore firebase() {
         try {
             FirebaseOptions options = new FirebaseOptions.Builder()

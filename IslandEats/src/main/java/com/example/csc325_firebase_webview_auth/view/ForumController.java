@@ -14,25 +14,24 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * Controller for map fxml file
+ * Controller for forum fxml file
  */
-public class MapController {
+public class ForumController {
     @FXML
     WebView webView;
-    @FXML
-    Button forumSwitch;
 
     private static boolean authentication = false;
 
+
     /**
-     * Initialize method prepares WebView
+     * Initialize method prepares and loads WebView
      */
     @FXML
     public void initialize() {
         WebEngine engine = webView.getEngine();
-        URL url = getClass().getResource("/files/Map.html");
-        assert url != null;
-        engine.load(url.toExternalForm());
+        //engine.setJavaScriptEnabled(false);
+        engine.load("https://www.reddit.com/r/island_eats/");
+        //engine.load("https://www.google.com");
     }
 
     @FXML
@@ -75,16 +74,16 @@ public class MapController {
         }
     }
 
-
     @FXML
-    private void LaunchForum() {
+    private void LaunchMap() {
         try {
-            App.setRoot("/files/Forum.fxml");
+            App.setRoot("/files/Map.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
+
 
     void autheticate(boolean auth) {
         authentication = auth;

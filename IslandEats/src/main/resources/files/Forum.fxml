@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane prefHeight="571.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325_firebase_webview_auth.view.ForumController">
+    <children>
+      <MenuBar layoutY="1.0" prefHeight="27.0" prefWidth="811.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="loginButton" mnemonicParsing="false" onAction="#LaunchLogin" text="Login" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Navigate">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#LaunchMap" text="Resource Map" />
+                  <MenuItem mnemonicParsing="false" onAction="#LaunchAddRecord" text="Add Resource" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+        <WebView fx:id="webView" layoutY="27.0" prefHeight="544.0" prefWidth="811.0" />
+    </children>
+</AnchorPane>

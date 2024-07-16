@@ -27,29 +27,35 @@ import javafx.util.Duration;
  */
 public class App extends Application {
 
-    @FXML
-    Button RegisterButton;
-
     public static Firestore fstore;
     public static FirebaseAuth fauth;
     public static Scene scene;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
 
+    /**
+     * Loads initial fxml file
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
-        scene = new Scene(loadFXML("/files/AccessFBView.fxml"));
+        scene = new Scene(loadFXML("/files/Map.fxml"));
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+    /**
+     * Sets root fxml file
+     */
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
+    /**
+     * Loads given fxml file
+     */
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml ));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
         return fxmlLoader.load();
     }
 
