@@ -30,6 +30,8 @@ public class MapController {
     @FXML
     public void initialize() {
         WebEngine engine = webView.getEngine();
+        engine.setJavaScriptEnabled(true);
+        engine.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36");
         URL url = getClass().getResource("/files/Map.html");
         assert url != null;
         engine.load(url.toExternalForm());

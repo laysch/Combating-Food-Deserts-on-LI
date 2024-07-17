@@ -1,12 +1,79 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenLayers Demo</title>
+    <style type="text/css">
+        html, body, #IslandEatsMap {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js"></script>
+    <script>
+        function initialize() {
+            var map = new OpenLayers.Map("IslandEatsMap");
+            var mapnik = new OpenLayers.Layer.OSM();
+            var fromProjection = new OpenLayers.Projection("EPSG:4326"); // Transform from WGS 1984
+            var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+
+            map.addLayer(mapnik);
+
+            var markers = new OpenLayers.Layer.Markers("Markers");
+            map.addLayer(markers);
+
+            map.setCenter(new OpenLayers.LonLat(-73.2454, 40.7251).transform(fromProjection, toProjection), 10);
+
+            //locations array stores location name, location, address, and hours
+            var locations = [
+                {name: "CCPJS Food Pantry", lon: -73.0634228, lat: 40.9085168, address: "545 Old Town Rd. Port Jefferson Station, NY 11776", hours: "T 10AM-1PM"},
+                {name: "Calvary Chapel FP", lon: -73.0817602, lat: 40.8097328, address: "1680 Railroad Ave Holbrook, NY 11741", hours: "SA 9:30AM-10:30AM"},
+                {name: "Hands Across Long Island (HALI) Soup Kitchen", lon: -73.2191512, lat: 40.7859766, address: "159 Brightside Avenue Central Islip, NY 11722", hours: "M-F 12:30PM-1PM"},
+                {name: "Federation Of Org/Power Soup Kitchen", lon: -73.0351444, lat: 40.7803995, address: "456 Waverly Ave Patchogue, NY 11772", hours: "W 2:30PM-6:30PM"},
+                {name: "AMHW Soup Kitchen", lon: -73.1213986, lat: 40.8083595, address: "939 Johnson Avenue Ronkonkoma, NY 11779", hours: "W 5PM-7PM"},
+                {name: "Bethpage Super Pantry", lon: -73.4954798, lat: 40.735181, address: "386 North Wantagh Avenue Bethpage, NY 11714", hours: "M W F 9AM-3PM, T TH 9AM-4:50PM"},
+                {name: "Bethany Food Pantry", lon: -73.5619444, lat: 40.762582, address: "962 Prospect Avenue Westbury, NY 11590", hours: "SU 11AM-1PM"},
+                {name: "Caring Shepherd, Inc.", lon: -73.6106547, lat: 40.6705148, address: "1614 Grand Avenue Baldwin, NY 11510", hours: "W 5PM-7PM, SA 2PM-4:30PM"},
+                {name: "Bridgehampton Community Food Pantry", lon: -72.3057153, lat: 40.9351231, address: "2357 Montauk Highway Bridgehampton, NY 11932", hours: "W 11AM-1PM"},
+                {name: "Branches of Long Island", lon: -72.9521515, lat: 40.8808945, address: "588 Middle Country Rd. Middle Island, NY 11953", hours: "M-F 10AM-8PM, SA SU 9AM-12PM"},
+                {name: "St. Patrick's Hospitality Soup Kitchen", lon: -73.2543989, lat: 40.7224466, address: "6 Fifth Avenue Bay Shore, NY 11706", hours: "M-F 10AM-12:30PM"},
+                {name: "St. Gerard Majella Stewardship Supper", lon: -73.052788, lat: 40.9148346, address: "300 Terryville Rd. Pt Jefferson Station, NY 11776", hours: "TH 4:30PM-5:30PM"},
+                {name: "Beach Catholic Outreach @ St Mary of the Isle Soup Kitchen", lon: -73.6547378, lat: 40.5881758, address: "315 E Walnut Street Long Beach, NY 11561", hours: "M-F 10:15AM-11:45AM"},
+                {name: "Agape Ministries Food Pantry", lon: -73.6347184, lat: 40.7054414, address: "50 Fulton Avenue Hempstead, NY 11550", hours: "W 4PM-6PM, SA 10AM-1PM"},
+                {name: "Abundant Life Church Of God", lon: -73.0684455, lat: 40.8068858, address: "440 Furrows Rd. Holbrook, NY 11741", hours: "TH 10AM-11:30AM, F 11AM-12:30PM"}
+            ];
+
+            //creates markers by looping through locations array
+            locations.forEach(function(location) {
+                var lonLat = new OpenLayers.LonLat(location.lon, location.lat).transform(fromProjection, toProjection);
+                var marker = new OpenLayers.Marker(lonLat);
+                markers.addMarker(marker);
+
+                //popup content string
+                var locationPopupContent = '<div><strong>' + location.name + '</strong><br>' + location.address + '<br>' + location.hours + '</div>';
+
+                //event listener to activate markers when clicked, adds data to popups
+                marker.events.register('mousedown', marker, function(evt) {
+                    var popup = new OpenLayers.Popup.FramedCloud(
+                        "Popup",
+                        lonLat,
+                        null,
+                        locationPopupContent,
+                        null,
+                        true
+                    );
+                    map.addPopup(popup);
+                    OpenLayers.Event.stop(evt);
+                });
+            });
+
+        }
+    </script>
 </head>
-<body>
-<form>
-    <iframe src="https://my.atlist.com/map/0a733b42-c4e1-4236-8316-383956175b78/?share=true" allow="geolocation 'self' https://my.atlist.com" width="100%" height="774px" loading="lazy" frameborder="0" scrolling="no" allowfullscreen id="atlist-embed"></iframe>
-</form>
+<body onload="initialize();">
+<div id="IslandEatsMap"></div>
 </body>
 </html>
