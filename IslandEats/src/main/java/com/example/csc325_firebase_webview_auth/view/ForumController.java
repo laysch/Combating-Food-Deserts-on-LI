@@ -9,6 +9,8 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +21,8 @@ import java.net.URL;
 public class ForumController {
     @FXML
     WebView webView;
+    @FXML
+    BorderPane borderPane;
 
     private static boolean authentication = false;
 
@@ -29,9 +33,12 @@ public class ForumController {
     @FXML
     public void initialize() {
         WebEngine engine = webView.getEngine();
-        //engine.setJavaScriptEnabled(false);
+        webView.setZoom(1.0);
+        engine.setJavaScriptEnabled(true);
+        engine.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36");
         engine.load("https://www.reddit.com/r/island_eats/");
         //engine.load("https://www.google.com");
+
     }
 
     @FXML
@@ -81,7 +88,15 @@ public class ForumController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    @FXML
+    private void LaunchMain() {
+        try {
+            App.setRoot("/files/AccessFBView.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

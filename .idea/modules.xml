@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IslandEats/IslandEats.iml" filepath="$PROJECT_DIR$/IslandEats/IslandEats.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/csc325-project.iml" filepath="$PROJECT_DIR$/.idea/csc325-project.iml" />
     </modules>
   </component>

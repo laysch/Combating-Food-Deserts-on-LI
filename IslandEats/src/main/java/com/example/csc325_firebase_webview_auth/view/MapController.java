@@ -83,7 +83,15 @@ public class MapController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    @FXML
+    private void LaunchMain() {
+        try {
+            App.setRoot("/files/AccessFBView.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     void autheticate(boolean auth) {

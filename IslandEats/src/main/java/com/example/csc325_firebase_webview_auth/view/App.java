@@ -30,17 +30,20 @@ public class App extends Application {
     public static Firestore fstore;
     public static FirebaseAuth fauth;
     public static Scene scene;
+    public static Stage primaryStage;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
 
     /**
      * Loads initial fxml file
      */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage stage) throws IOException {
+        primaryStage = stage;
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
-        scene = new Scene(loadFXML("/files/Map.fxml"));
+        scene = new Scene(loadFXML("/files/AccessFBView.fxml"));
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
@@ -49,6 +52,7 @@ public class App extends Application {
      */
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        primaryStage.sizeToScene();
     }
 
     /**
