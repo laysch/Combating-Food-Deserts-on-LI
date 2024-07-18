@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f9f6f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="files.UserGuide">
+    <children>
+        <Text layoutX="206.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Island Eats: User Guide">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="71.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Navigating the Features" wrappingWidth="490.21630859375">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="71.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Resource Map: Locate food pantries, soup kitchens, and other assistance programs near you." wrappingWidth="458.26806640625" />
+        <Text layoutX="98.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Use: Access the &quot;Resource Map&quot; in the &quot;Navigate&quot; section to find information on the locations and operating hours of these resources." wrappingWidth="458.26806640625" />
+        <Text layoutX="71.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Community Map: Share and find recipes, volunteer opportunities, local food initiatives, advice, and fun facts about nutrition and wellness." wrappingWidth="458.26806640625" />
+        <Text layoutX="98.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Use: Access the &quot;Community Forum&quot; in the &quot;Navigate&quot; section to access the forum and make sure to sign up/log in in order to participate in the discussions" wrappingWidth="458.26806640625" />
+        <Text layoutX="71.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Add a Resource:  Access under the &quot;Navigate&quot; section and help others by adding new resources you discover to help your community" wrappingWidth="458.26806640625" />
+        <Text layoutX="98.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Use: Log into your Island Eats account in order to be able to submit a request. Then, enter the details of the resource, and submit it for approval" wrappingWidth="458.26806640625" />
+    </children>
+</AnchorPane>
