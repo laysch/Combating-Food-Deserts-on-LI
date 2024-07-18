@@ -4,16 +4,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 
-
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Controller for forum fxml file
@@ -41,6 +38,9 @@ public class ForumController {
 
     }
 
+    /**
+     *  LaunchLogin method is used to switch scenes to the login screen
+     * */
     @FXML
     private void LaunchLogin() {
         try {
@@ -59,6 +59,9 @@ public class ForumController {
         }
     }
 
+    /**
+     *  LaunchAddRecord method is used to switch scenes to the add record screen. If the user has not logged in they will be unable to access this screen
+     * */
     @FXML
     private void LaunchAddRecord() {
         if (authentication) {
@@ -81,6 +84,9 @@ public class ForumController {
         }
     }
 
+    /**
+     *  LaunchMap method is used to switch scenes to the map.
+     * */
     @FXML
     private void LaunchMap() {
         try {
@@ -90,6 +96,9 @@ public class ForumController {
         }
     }
 
+    /**
+     *  LaunchMain method is used to switch scenes to the main menu.
+     * */
     @FXML
     private void LaunchMain() {
         try {
@@ -99,7 +108,9 @@ public class ForumController {
         }
     }
 
-
+    /**
+     *  Authenticate method is used to authorize administrators before allowing them to add data.
+     * */
     void autheticate(boolean auth) {
         authentication = auth;
         System.out.println(authentication);

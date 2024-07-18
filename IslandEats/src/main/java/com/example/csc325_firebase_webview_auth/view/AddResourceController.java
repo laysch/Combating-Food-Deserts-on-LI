@@ -13,6 +13,9 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
+/**
+ *  AddResourceController class is the controller for the AddResourceUI fxml document
+ * */
 public class AddResourceController {
     //fxml member variables
     @FXML
@@ -29,10 +32,12 @@ public class AddResourceController {
     private TextField zipField;
     @FXML
     private TextField urlField;
-
     @FXML
     private Button writeButton;
 
+    /**
+     *  initialize prepares textfields prior to user input
+     * */
     void initialize() {
         AccessDataViewModel accessDataViewModel = new AccessDataViewModel();
         nameField.textProperty().bindBidirectional(accessDataViewModel.resourceNameProperty());
@@ -75,6 +80,9 @@ public class AddResourceController {
         }
     }
 
+    /**
+     *  resetFields method is used to clear all text fields
+     * */
     @FXML
     private void resetFields() {
         nameField.clear();

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="616.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325_firebase_webview_auth.view.SplashScreenController">
+   <children>
+      <ImageView fitHeight="705.0" fitWidth="705.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@islandeatslogo.jpeg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

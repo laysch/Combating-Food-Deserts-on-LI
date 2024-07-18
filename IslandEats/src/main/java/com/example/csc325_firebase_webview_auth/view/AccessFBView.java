@@ -1,13 +1,8 @@
-package com.example.csc325_firebase_webview_auth.view;//package modelview;
+package com.example.csc325_firebase_webview_auth.view;
 
-import com.example.csc325_firebase_webview_auth.viewmodel.AccessDataViewModel;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
-import com.google.cloud.firestore.WriteResult;
-import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.UserRecord;
 
 import java.io.*;
 import java.util.*;
@@ -23,23 +18,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
+/**
+ *  AccessFBView class is the controller for the main menu AccessFBView fxml document
+ * */
 public class AccessFBView {
-    //fxml member variables
-    @FXML
-    private TextArea outputField;
-    @FXML
-    private Button switchScene;
-
+    //member variables
     private boolean key;
     private ObservableList<Resource> listOfResources = FXCollections.observableArrayList();
     private Resource resource;
 
+    //authentication checks if the user has been logged in before allowing them to add data
     private static boolean authentication = false;
 
+    //Tableview + Columns declaration
     @FXML
     private TableView<Resource> table;
     @FXML
@@ -55,25 +48,11 @@ public class AccessFBView {
     @FXML
     private TableColumn<Resource, String> zipcode;
 
-    public ObservableList<Resource> getListOfResroucess() {
-        return listOfResources;
-    }
-
     /**
      *  initialize sets up the table view
      * */
     @FXML
     void initialize() {
-//        AccessDataViewModel accessDataViewModel = new AccessDataViewModel();
-//        nameField.textProperty().bindBidirectional(accessDataViewModel.resourceNameProperty());
-//        addressField.textProperty().bindBidirectional(accessDataViewModel.resourceAddressProperty());
-//        cityField.textProperty().bindBidirectional(accessDataViewModel.resourceCityProperty());
-//        stateField.textProperty().bindBidirectional(accessDataViewModel.resourceStateProperty());
-//        zipField.textProperty().bindBidirectional(accessDataViewModel.resourceZipProperty());
-//        hoursField.textProperty().bindBidirectional(accessDataViewModel.resourceHoursProperty());
-//        urlField.textProperty().bindBidirectional(accessDataViewModel.resourceUrlProperty());
-//        writeButton.disableProperty().bind(accessDataViewModel.isWritePossibleProperty().not());
-
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         address.setCellValueFactory(new PropertyValueFactory<>("address"));
         city.setCellValueFactory(new PropertyValueFactory<>("city"));
@@ -92,12 +71,6 @@ public class AccessFBView {
     @FXML
     public void readRecord(ActionEvent event) {
         readFirebase();
-    }
-
-
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("/files/WebContainer.fxml");
     }
 
     /**
@@ -137,30 +110,8 @@ public class AccessFBView {
     }
 
     /**
-     *  Registers user in firebase auth *NOT USED*
+     *  LaunchLogin method is used to switch scenes to the login screen
      * */
-    public boolean registerUser(String email, String password) {
-        UserRecord.CreateRequest request = new UserRecord.CreateRequest()
-                .setEmail(email)
-                .setEmailVerified(false)
-                .setPassword(password)
-                .setPhoneNumber("+11234567890")
-                .setDisplayName("John Doe")
-                .setDisabled(false);
-
-        UserRecord userRecord;
-        try {
-            userRecord = App.fauth.createUser(request);
-            System.out.println("Successfully created new user: " + userRecord.getUid());
-            return true;
-
-        } catch (FirebaseAuthException ex) {
-            // Logger.getLogger(FirestoreContext.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-
-    }
-
     @FXML
     private void LaunchLogin() {
         try {
@@ -179,6 +130,9 @@ public class AccessFBView {
         }
     }
 
+    /**
+     *  LaunchAddRecord method is used to switch scenes to the add record screen. If the user has not logged in they will be unable to access this screen
+     * */
     @FXML
     private void LaunchAddRecord() {
         if (authentication) {
@@ -201,6 +155,9 @@ public class AccessFBView {
         }
     }
 
+    /**
+     *  LaunchMap method is used to switch scenes to the map.
+     * */
     @FXML
     private void LaunchMap() {
         try {
@@ -210,6 +167,9 @@ public class AccessFBView {
         }
     }
 
+    /**
+     *  LaunchForum method is used to switch scenes to the Community Forum.
+     * */
     @FXML
     private void LaunchForum() {
         try {
@@ -219,6 +179,9 @@ public class AccessFBView {
         }
     }
 
+    /**
+     *  Authenticate method is used to authorize administrators before allowing them to add data.
+     * */
     void autheticate(boolean auth) {
         authentication = auth;
         System.out.println(authentication);

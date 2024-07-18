@@ -17,11 +17,11 @@ import java.net.URL;
  * Controller for map fxml file
  */
 public class MapController {
+    //fxml member variable
     @FXML
     WebView webView;
-    @FXML
-    Button forumSwitch;
 
+    //authentication checks if the user has been logged in before allowing them to add data
     private static boolean authentication = false;
 
     /**
@@ -37,6 +37,9 @@ public class MapController {
         engine.load(url.toExternalForm());
     }
 
+    /**
+     *  LaunchLogin method is used to switch scenes to the login screen
+     * */
     @FXML
     private void LaunchLogin() {
         try {
@@ -55,6 +58,9 @@ public class MapController {
         }
     }
 
+    /**
+     *  LaunchAddRecord method is used to switch scenes to the add record screen. If the user has not logged in they will be unable to access this screen
+     * */
     @FXML
     private void LaunchAddRecord() {
         if (authentication) {
@@ -77,7 +83,9 @@ public class MapController {
         }
     }
 
-
+    /**
+     *  LaunchForum method is used to switch scenes to the Community Forum.
+     * */
     @FXML
     private void LaunchForum() {
         try {
@@ -87,6 +95,9 @@ public class MapController {
         }
     }
 
+    /**
+     *  LaunchMain method is used to switch scenes to the main menu.
+     * */
     @FXML
     private void LaunchMain() {
         try {
@@ -96,6 +107,9 @@ public class MapController {
         }
     }
 
+    /**
+     *  Authenticate method is used to authorize administrators before allowing them to add data.
+     * */
     void autheticate(boolean auth) {
         authentication = auth;
         System.out.println(authentication);
