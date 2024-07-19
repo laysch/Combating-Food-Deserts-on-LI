@@ -22,6 +22,12 @@
                   <MenuItem mnemonicParsing="false" onAction="#LaunchAddRecord" text="Add Resource" />
                </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#LaunchUserGuide" text="User Guide" />
+                  <MenuItem mnemonicParsing="false" onAction="#LaunchAbout" text="About" />
+               </items>
+            </Menu>
          </menus>
       </MenuBar>
    </top>

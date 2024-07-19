@@ -23,6 +23,7 @@ public class App extends Application {
     public static Firestore fstore;
     public static FirebaseAuth fauth;
     public static Scene scene;
+    public static Scene about;
     public static Scene splash;
     public static Stage primaryStage;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
@@ -35,12 +36,14 @@ public class App extends Application {
         primaryStage = stage;
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
-        scene = new Scene(loadFXML("/files/AccessFBView.fxml"));
+        scene = new Scene(loadFXML("/files/About.fxml"));
         splash = new Scene(loadFXML("/files/SplashScreen.fxml"));
+
         primaryStage.setResizable(false);
         primaryStage.show();
         primaryStage.setScene(splash);
         primaryStage.show();
+
         PauseTransition delay = new PauseTransition(Duration.seconds(3));
         delay.setOnFinished(event -> {
             primaryStage.setScene(scene);

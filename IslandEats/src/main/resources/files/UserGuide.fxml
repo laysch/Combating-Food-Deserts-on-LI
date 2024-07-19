@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f9f6f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="files.UserGuide">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f9f6f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325_firebase_webview_auth.view.UserGuideController">
     <children>
         <Text layoutX="206.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Island Eats: User Guide">
             <font>

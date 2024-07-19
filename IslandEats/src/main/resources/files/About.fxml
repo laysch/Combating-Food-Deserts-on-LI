@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="865.0" maxWidth="1191.0" minHeight="800.0" minWidth="1191.0" prefHeight="865.0" prefWidth="1191.0" style="-fx-background-color: #f9f6f0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="files.About">
+<AnchorPane maxHeight="865.0" maxWidth="1191.0" minHeight="800.0" minWidth="1191.0" prefHeight="865.0" prefWidth="1191.0" style="-fx-background-color: #f9f6f0;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325_firebase_webview_auth.view.AboutController">
     <children>
         <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="1191.0">
             <menus>
@@ -23,50 +23,50 @@
                         <MenuItem mnemonicParsing="false" onAction="#LaunchMain" text="Main Menu" />
                         <MenuItem mnemonicParsing="false" onAction="#LaunchForum" text="Community Forum" />
                         <MenuItem mnemonicParsing="false" onAction="#LaunchAddRecord" text="Add Resource" />
+                        <MenuItem mnemonicParsing="false" onAction="#LaunchMap" text="Resource Map" />
                     </items>
                 </Menu>
             </menus>
-
         </MenuBar>
-      <ImageView fitHeight="177.0" fitWidth="400.0" layoutX="399.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@smallislandeats-logo.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="119.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="115.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join Our Community">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="119.0" layoutY="644.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Us">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="120.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Island Eats is a dedicated team committed to addressing food deserts on Long Island. We connect residents with healthy, affordable food options, provide resources for community support, and promote local food initiatives. Our goal is to improve health and foster a stronger, more informed community." wrappingWidth="479.9460906982422">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="118.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up and start exploring resources and contributing to your community." wrappingWidth="479.9460906982422">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text layoutX="116.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can't find what you're looking for? We're here to help! Reach out to us at support-islandeats@gmail.com for any questions, suggestions, or assistance." wrappingWidth="479.9460906982422">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="496.0" fitWidth="467.0" layoutX="662.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Fruits-and-vegetables-on-transparent-background-PNG.png" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="177.0" fitWidth="400.0" layoutX="399.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@smallislandeats-logo.png" />
+            </image>
+        </ImageView>
+        <Text layoutX="119.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Text>
+        <Text layoutX="115.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join Our Community">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Text>
+        <Text layoutX="119.0" layoutY="644.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Us">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Text>
+        <Text layoutX="120.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Island Eats is a dedicated team committed to addressing food deserts on Long Island. We connect residents with healthy, affordable food options, provide resources for community support, and promote local food initiatives. Our goal is to improve health and foster a stronger, more informed community." wrappingWidth="479.9460906982422">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <Text layoutX="118.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up and start exploring resources and contributing to your community." wrappingWidth="479.9460906982422">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <Text layoutX="116.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Can't find what you're looking for? We're here to help! Reach out to us at support-islandeats@gmail.com for any questions, suggestions, or assistance." wrappingWidth="479.9460906982422">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="496.0" fitWidth="467.0" layoutX="662.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Fruits-and-vegetables-on-transparent-background-PNG.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

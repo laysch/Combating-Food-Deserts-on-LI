@@ -108,6 +108,39 @@ public class MapController {
     }
 
     /**
+     *  LaunchLogin method is used to switch scenes to the login screen
+     * */
+    @FXML
+    private void LaunchUserGuide() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/files/UserGuide.fxml"));
+            Parent parent = fxmlLoader.load();
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.setScene(scene);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     *  LaunchAbout method is used to switch scenes to the About screen.
+     * */
+    @FXML
+    private void LaunchAbout() {
+        try {
+            App.setRoot("/files/About.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      *  Authenticate method is used to authorize administrators before allowing them to add data.
      * */
     void autheticate(boolean auth) {

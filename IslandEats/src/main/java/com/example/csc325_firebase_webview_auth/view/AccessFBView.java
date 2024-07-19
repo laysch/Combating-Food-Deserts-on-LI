@@ -86,9 +86,9 @@ public class AccessFBView {
         try {
             documents = future.get().getDocuments();
             if (documents.size() > 0) {
-                System.out.println("Outing....");
+                //System.out.println("Outing....");
                 for (QueryDocumentSnapshot document : documents) {
-                    System.out.println(document.getId() + " => " + document.getData().get("name"));
+                    //System.out.println(document.getId() + " => " + document.getData().get("name"));
                     resource = new Resource(String.valueOf(document.getData().get("name")),
                             document.getData().get("address").toString(),
                             document.getData().get("city").toString(),
@@ -174,6 +174,39 @@ public class AccessFBView {
     private void LaunchForum() {
         try {
             App.setRoot("/files/Forum.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     *  LaunchLogin method is used to switch scenes to the login screen
+     * */
+    @FXML
+    private void LaunchUserGuide() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/files/UserGuide.fxml"));
+            Parent parent = fxmlLoader.load();
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.setScene(scene);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     *  LaunchAbout method is used to switch scenes to the About screen.
+     * */
+    @FXML
+    private void LaunchAbout() {
+        try {
+            App.setRoot("/files/About.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
