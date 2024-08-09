@@ -1,4 +1,4 @@
-# CSC 325: Island Eats
+# Combating Food Deserts on Long Island: Island Eats
 
 Figma: https://www.figma.com/design/zPDmtKSw68z9OFaO2MXaqr/Food-Deserts-Project?node-id=0-1&t=15yOuEQyAVAiKWez-1
 
